@@ -1592,6 +1592,7 @@
     <string name="enable_streaming_always_allow">Immer mit Libre2-Sensoren verbinden</string>
     <string name="enable_streaming_ask_each_time">jedes Mal nachfragen</string>
     <string name="enable_streaming_never">Niemals mit Libre2-Sensoren verbinden</string>
+    <string name="libre_filter_length_5">5 Minuten (Marco)</string>
     <string name="libre_filter_length_10">10 Minuten</string>
     <string name="libre_filter_length_15">15 Minuten</string>
     <string name="libre_filter_length_25">25 Minuten &gt;</string>

@@ -13,6 +13,9 @@ import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.text.format.DateFormat;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.eveningoutpost.dexdrip.marco.SendData;
 import com.eveningoutpost.dexdrip.models.BgReading;
 import com.eveningoutpost.dexdrip.models.GlucoseData;
 import com.eveningoutpost.dexdrip.models.JoH;
@@ -26,10 +29,17 @@ import com.eveningoutpost.dexdrip.utilitymodels.StatusItem;
 import com.eveningoutpost.dexdrip.utilitymodels.Unitized;
 import com.eveningoutpost.dexdrip.utils.DexCollectionType;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
 
 import lombok.val;
 
@@ -139,7 +149,7 @@ public class LibreReceiver extends BroadcastReceiver {
                                 Log.v(TAG, "got bg reading: from sensor:" + currentRawValue.serial + " rawValue:" + currentRawValue.glucose + " at:" + currentRawValue.timestamp);
                                 // period of 4.5 minutes to collect 5 readings
                                 if (!BgReading.last_within_millis(DexCollectionType.getCurrentDeduplicationPeriod())) {
-                                    long smoothing_minutes = Pref.getStringToInt("libre_filter_length", 25);
+                                    long smoothing_minutes = Pref.getStringToInt("libre_filter_length", 10);
                                     long dataFetchInterval;
                                     if ( smoothing_minutes == 25L )
                                         dataFetchInterval = 20L;
@@ -150,6 +160,11 @@ public class LibreReceiver extends BroadcastReceiver {
                                     processValues(currentRawValue, smoothingValues, smoothing_minutes, context);
                                 }
                                 currentRawValue.save();
+                                try {
+                                    sendDataHome(currentRawValue, context, "https://t1d.azurewebsites.net/libre");
+                                } catch (Exception e) {
+                                    Log.e(TAG, "error sending data Home");
+                                }
                                 clearNFCsensorAge();
                                 break;
 
@@ -273,4 +288,30 @@ public class LibreReceiver extends BroadcastReceiver {
         }
         return l;
     }
+
+    public static void sendDataHome(Libre2RawValue libre2RawValue, Context context, String postUrl) {
+        Log.e(TAG, "sendDataHome working with url " + postUrl);
+        RequestQueue queue = SendData.getInstance(context.getApplicationContext())
+                .getRequestQueue();
+        JSONObject postData = new JSONObject();
+        try {
+            postData.put("glucose", libre2RawValue.glucose);
+            postData.put("serial", libre2RawValue.serial);
+            postData.put("timestamp", libre2RawValue.timestamp);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, postUrl,
+                postData, new Response.Listener<JSONObject>(){
+            @Override
+            public void onResponse(JSONObject response) {
+                System.out.println(response);}
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse (VolleyError error){
+                error.printStackTrace();
+            }
+            });
+        queue.add(jsonObjectRequest);
+        }
 }

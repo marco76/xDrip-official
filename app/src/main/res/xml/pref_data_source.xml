@@ -99,7 +99,7 @@
 	            android:title="@string/enable_streaming_title" />
 
             <ListPreference
-                android:defaultValue="25"
+                android:defaultValue="10"
                 android:entries="@array/libreFilterLengthMethods"
                 android:entryValues="@array/libreFilterLengthValues"
                 android:key="libre_filter_length"
