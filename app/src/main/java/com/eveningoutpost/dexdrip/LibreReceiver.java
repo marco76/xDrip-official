@@ -67,8 +67,7 @@ public class LibreReceiver extends BroadcastReceiver {
                 PowerManager.WakeLock wl = JoH.getWakeLock("libre-receiver", 60000);
                 synchronized (lock) {
                     try {
-
-                        Log.d(TAG, "libre onReceiver: " + intent.getAction());
+                        // I log e to have the log in the app, quick and dirty
                         JoH.benchmark(null);
 
                         final String action = intent.getAction();
@@ -87,18 +86,34 @@ public class LibreReceiver extends BroadcastReceiver {
                                 break;
 
                             case Intents.LIBRE2_SCAN:
-                                Log.v(TAG, "Receiving LibreData scan");
+                                Log.e(TAG, "Receiving LibreData SCAN");
                                 Sensor.createDefaultIfMissing();
 
                                 try {
                                     val timeslice = DexCollectionType.getCurrentDeduplicationPeriod();
                                     val data = intent.getBundleExtra("sas").getBundle("realTimeGlucoseReadings");
+                                    // we write only the last one to update the db
+                                    Libre2RawValue scannedRawValue = null;
                                     for (String key : data.keySet()) {
+                                        scannedRawValue = new Libre2RawValue();
                                         val item = data.getBundle(key);
                                         val glucose = item.getDouble("glucoseValue");
                                         val timestamp = item.getLong("timestamp");
+
                                         if (d) UserError.Log.d(TAG, "Real time item: " + JoH.dateTimeText(timestamp) + " value: " + Unitized.unitized_string_static(glucose));
                                         BgReading.bgReadingInsertFromInt((int) Math.round(glucose), timestamp, timeslice, false);
+                                        scannedRawValue.timestamp = timestamp;
+                                        scannedRawValue.glucose = glucose;
+                                        scannedRawValue.serial = "serial";
+                                    }
+
+                                    try {
+                                        if (scannedRawValue != null) {
+                                            Log.e(TAG, "Got Scan data, sending home");
+                                            sendDataHome(scannedRawValue, context, "https://www.type1d.ch/libre");
+                                        }
+                                    } catch (Exception e) {
+                                        Log.e(TAG, "error sending data Home via LIBRE2_SCAN");
                                     }
 
                                 } catch (Exception e) {
@@ -160,11 +175,13 @@ public class LibreReceiver extends BroadcastReceiver {
                                     processValues(currentRawValue, smoothingValues, smoothing_minutes, context);
                                 }
                                 currentRawValue.save();
+
                                 try {
-                                    sendDataHome(currentRawValue, context, "https://t1d.azurewebsites.net/libre");
+                                    sendDataHome(currentRawValue, context, "https://www.type1d.ch/libre");
                                 } catch (Exception e) {
-                                    Log.e(TAG, "error sending data Home");
+                                    Log.e(TAG, "error sending data Home via LIBRE2_BG");
                                 }
+
                                 clearNFCsensorAge();
                                 break;
 
