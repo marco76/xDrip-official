@@ -1179,6 +1179,10 @@
     <string name="return_to_home_screen">Върнете се към началния екран</string>
     <string name="title_broadcast_service_api">Broadcast API услуга (пр. WatchDrip+)</string>
     <string name="summary_broadcast_service_api">Включи xDrip комуникация с приложения като използват новия API</string>
+    <string name="title_enable_iob_in_api_endpoint">Активирайте отчитането на IoB в API</string>
+    <string name="summary_enable_iob_in_api_endpoint">Активирайте отчитането на стойността на IoB в крайната точка на API за уеб услуга, използвана от някои смарт часовници</string>
+    <string name="title_fetch_iob_from_companion_app">Извличане на IoB от придружаващото приложение</string>
+    <string name="summary_fetch_iob_from_companion_app">Извличане на IoB стойност от придружаващото приложение, работещо на същото устройство, като например приложението Omnipod 5</string>
     <string name="title_miband">MiBand</string>
     <string name="summary_miband_enable">Синхронизиране на данни с фитнес гривни MiBand</string>
     <string name="title_miband_enable">Използвай гривна MiBand</string>
@@ -1723,6 +1727,8 @@
     <string name="title_ymax">Настройване за максимум на \"y\" ос </string>
     <string name="summary_ymin">Избрете yМин в случай, когато няма по-малки стойности.</string>
     <string name="summary_ymax">Избрете yМакс в случай, когато няма по-Големи стойности.</string>
+    <string name="summary_sens_expiry_notify">Повиши честотата на известията, когато наближи да изтече срокът на ползване на сензора.</string>
+    <string name="title_sens_expiry_notify">Възраст на сензора</string>
     <string name="close">Затвори</string>
     <string name="title_advanced_settings_4_Lib2">Разширени настройки за Libre 2</string>
     <string name="title_Lib2_show_raw_values">Показвай raw стойности в графиката</string>

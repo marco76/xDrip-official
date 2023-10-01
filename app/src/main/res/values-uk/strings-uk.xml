@@ -977,6 +977,7 @@
     <string name="emergency_message_near_format_string">%1$s в районі %2$s %3$s %4$s %5$s</string>
     <string name="choose_when_to_send_messages">Відправляти повідомлення в разі: </string>
     <string name="low_alert_not_acknowledged">Непідтверджений сигнал тривоги нижньої границі</string>
+    <string name="lowest_alert_not_acknowledged">Сигнал тривоги нижньої границі не підтверджено</string>
     <string name="high_alert_not_acknowledged">Непідтверджений сигнал тривоги верхньої границі</string>
     <string name="device_inactivity">Бездіяльність пристрою</string>
     <string name="test_message_sending">Відправка тестового повідомлення</string>
@@ -1203,6 +1204,10 @@
     <string name="return_to_home_screen">Повернутися до домашнього екрану</string>
     <string name="title_broadcast_service_api">API сервісу трансляції</string>
     <string name="summary_broadcast_service_api">Дозволяє xDrip комунікацію з іншими програмами за допомогою нового API</string>
+    <string name="title_enable_iob_in_api_endpoint">Увімкнути звіти IoB в API</string>
+    <string name="summary_enable_iob_in_api_endpoint">Передавати IoB через Web Service API, що використовується деякими smart-годинниками</string>
+    <string name="title_fetch_iob_from_companion_app">Отримувати IoB з партнерського додатку</string>
+    <string name="summary_fetch_iob_from_companion_app">Приймати IoB з партнерської програми, запущеної на тому ж пристрої, наприклад Omnipod 5</string>
     <string name="title_miband">MiBand</string>
     <string name="summary_miband_enable">Надсилати дані на MiBand</string>
     <string name="title_miband_enable">Інтеграція з MiBand</string>
@@ -1760,6 +1765,8 @@
     <string name="summary_ymin">Виберіть мінімальне значення для осі y, коли немає менших зчитувань.</string>
     <string name="summary_ymax">Виберіть максимальне значення для осі y, коли немає більших зчитувань.</string>
     <string name="wait_to_connect">Перевірте налаштування і чекайте підключення.</string>
+    <string name="summary_sens_expiry_notify">Увімкнути сповіщення, коли закінчується термін дії сенсору.</string>
+    <string name="title_sens_expiry_notify">Термін сенсору закінчується</string>
     <string name="close">Закрити</string>
     <string name="title_advanced_settings_4_Lib2">Розширені налаштування для Libre 2</string>
     <string name="title_Lib2_show_raw_values">Показати не скореговані значення на графіку</string>
