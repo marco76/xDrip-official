@@ -67,7 +67,7 @@ public class LibreReceiver extends BroadcastReceiver {
                 PowerManager.WakeLock wl = JoH.getWakeLock("libre-receiver", 60000);
                 synchronized (lock) {
                     try {
-                        // I log e to have the log in the app, quick and dirty
+                        Log.d(TAG, "libre onReceiver: " + intent.getAction());
                         JoH.benchmark(null);
 
                         final String action = intent.getAction();
@@ -86,7 +86,7 @@ public class LibreReceiver extends BroadcastReceiver {
                                 break;
 
                             case Intents.LIBRE2_SCAN:
-                                Log.e(TAG, "Receiving LibreData SCAN");
+                                Log.v(TAG, "Receiving LibreData scan");
                                 Sensor.createDefaultIfMissing();
 
                                 try {
