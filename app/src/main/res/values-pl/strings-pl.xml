@@ -1207,6 +1207,7 @@
     <string name="title_broadcast_service_api">Nadawaj Service API</string>
     <string name="summary_broadcast_service_api">Umożliwia komunikację xDrip z aplikacjami innych firm poprzez użycie nowego API</string>
     <string name="title_enable_iob_in_api_endpoint">Włącz raportowanie IoB w API</string>
+    <string name="summary_enable_iob_in_api_endpoint"></string>
     <string name="title_fetch_iob_from_companion_app">Pobierz IoB z aplikacji towarzyszącej</string>
     <string name="summary_fetch_iob_from_companion_app">Pobierz wartość IoB z aplikacji towarzyszącej działającej na tym samym urządzeniu, np. Omnipod 5 App</string>
     <string name="title_miband">MiBand</string>
@@ -1290,6 +1291,7 @@
     <string name="title_nsfollow_url">Adres URL do obserwowania Nightscout</string>
     <string name="summary_nsfollow_download_treatments">Pobierz również zabiegi z Nightscout jako obserwator</string>
     <string name="title_nsfollow_download_treatments">Pobieraj zabiegi</string>
+    <string name="title_nsfollow_lag">Odstęp czasowy śledzenia Nightscout</string>
     <!-- Maybe we can use them later?
     <string name="title_clfollow_user">CareLink Username</string>
     <string name="summary_clfollow_user">CareLink login username</string>
@@ -1309,6 +1311,7 @@
     <string name="title_clfollow_grace_period">Okres karencji</string>
     <string name="summary_clfollow_grace_period">Okres karencji dla żądania danych w sekundach</string>
     <string name="title_clfollow_missed_poll_interval">Interwał ankiet nieodebranych danych</string>
+    <string name="summary_clfollow_missed_poll_interval"></string>
     <string name="title_clfollow_download_finger_bgs">Poziom cukru z palca</string>
     <string name="title_clfollow_download_boluses">Bolusy</string>
     <string name="summary_clfollow_download_boluses">Pobierz bolusy z CareLink</string>
@@ -1330,7 +1333,7 @@
     <string name="title_ob1_g5_fallback_to_xdrip">Awaryjny powrót do algorytmu xDrip</string>
     <string name="summary_ob1_minimize_scanning">Użyj heurystyki, aby zminimalizować skanowanie Bluetooth i oszczędzać energię</string>
     <string name="title_ob1_minimize_scanning">Minimalizuj skanowanie</string>
-    <string name="summary_using_g6">Używam czujnika G6 lub Dexcom 1</string>
+    <string name="summary_using_g6">Używam czujnika G6</string>
     <string name="title_using_g6">Obsługa G6/Dex1</string>
     <string name="summary_ob1_g5_allow_resetbond">Kolektor OB1 może odłączyć, jeśli uzna, że szyfrowanie się nie powiodło. Jeśli wystąpią problemy z odparowaniem, wyłącz tę opcję. Jeśli wtedy całkowicie utracisz połączenie, upewnij się, że jest to włączone.</string>
     <string name="title_ob1_g5_allow_resetbond">Zezwól na odłączenie OB1</string>
@@ -1377,12 +1380,24 @@
     <string name="title_use_number_icon_large">Użyj dużej ikony wartości</string>
     <string name="summary_number_icon_large_arrow">Pokaż strzałkę trendu w dużej ikonie</string>
     <string name="title_number_icon_large_arrow">Pokaż strzałkę w Dużej Ikonie</string>
+    <string name="title_xdrip_plus_accessibility">Ustawienia niegasnącego wyświetlacza</string>
+    <string name="summary_aod_use_top">Użyj pierwszych 20% ekranu dla widżetu niegasnącego wyświetlacza</string>
+    <string name="title_aod_use_top">Użyj góry</string>
+    <string name="summary_aod_use_top_center">Użyj drugich 20% ekranu dla widżetu niegasnącego wyświetlacza</string>
+    <string name="title_aod_use_top_center">Użyj górnego środka</string>
+    <string name="summary_aod_use_center">Użyj trzecich 20% ekranu dla widżetu niegasnącego wyświetlacza</string>
+    <string name="title_aod_use_center">Użyj środka</string>
+    <string name="summary_aod_use_center_bottom">Użyj czwartych 20% ekranu dla widżetu niegasnącego wyświetlacza</string>
+    <string name="title_aod_use_center_bottom">Użyj środka na dole</string>
+    <string name="summary_aod_use_bottom">Użyj ostatnich 20% ekranu dla widżetu niegasnącego wyświetlacza</string>
+    <string name="title_aod_use_bottom">Użyj dołu</string>
     <string name="summary_show_home_on_boot">Pokaż okno xDrip po uruchomieniu urządzenia</string>
     <string name="title_show_home_on_boot">Pokaż xDrip przy uruchomieniu telefonu</string>
     <string name="eula">Licencja</string>
     <string name="summary_plus_accept_follower_actions">Zabiegi, kalibracje i inne działania ze strony obserwatorów będą akceptowane</string>
     <string name="title_plus_accept_follower_actions">Akceptuj akcje obserwatora</string>
     <string name="summary_plus_whole_house">Weź udział w Whole House Network</string>
+    <string name="summary_libre_whole_house_collector">Ten telefon będzie kolektorem w całej sieci domowej</string>
     <string name="summary_xdrip_plus_desert_sync_settings">Odbiór bez dostępu do sieci</string>
     <string name="title_xdrip_plus_desert_sync_settings">Lokalna synchronizacja</string>
     <string name="title_desert_sync_enabled">Lokalna synchronizacja</string>
@@ -1485,6 +1500,8 @@
     <string name="change_settings">Zmień ustawienia</string>
     <string name="do_you_want_to_delete_and_reset_the_calibrations_for_this_sensor">Czy chcesz usunąć i zresetować kalibracje dla tego czujnika?</string>
     <string name="sensor_stop_confirm">Czy chcesz zatrzymać czujnik?</string>
+    <string name="sensor_stop_confirm_norestart">Nie będziesz w stanie po prostu zrestartować czujnika.</string>
+    <string name="sensor_stop_confirm_really_norestart">UWAGA!\n\nNie będziesz w stanie zrestartować urządzenia.</string>
     <string name="you_have_an_old_experimental_glucose_prediction_setting_enabled__this_is_not_recommended_and_could_mess_things_up_badly__shall_i_disable_this_for_you">Masz włączoną starą eksperymentalną opcję przewidywania glikemii.\n\nTo NIE jest zalecane i może wiele popsuć.\n\nCzy mogę ją dla Ciebie wyłączyć?</string>
     <string name="settings_issue">Problem z ustawieniami!</string>
     <string name="do_you_want_to_use_this_synced_fingerstick_blood_glucose_result_to_calibrate_with__you_can_change_when_this_dialog_is_displayed_in_settings">Czy chcesz użyć tej zsynchronizowanej wartości stężenia glukozy we krwi do kalibracji?\n\n(możesz zmienić kiedy to okno dialogowe jest wyświetlane w Ustawieniach)</string>
@@ -1743,4 +1760,17 @@
     <string name="summary_Lib2_show_sense_on_status">Włącz, aby wyświetlić dodatkowe informacje o stanie czujnika Libre 2.</string>
     <string name="import_qr_code_warning">Importuj ustawienia tylko z zaufanych źródeł!\n\nPotwierdź zaimportowanie następujących ustawień:\n\n</string>
     <string name="scan_to_load_xdrip_settings">Zeskanuj, aby załadować ustawienia xDrip</string>
+    <string name="manage_permissions">Zarządzaj uprawnieniami</string>
+    <string name="carelink_auth_country_required">Kraj jest wymagany!</string>
+    <string name="carelink_auth_status_authenticated">Status uwierzytelniony!</string>
+    <string name="carelink_auth_status_not_authenticated">Brak uwierzytelnionego statusu!</string>
+    <string name="carelink_auth_login_in_progress">Logowanie w toku...</string>
+    <string name="carelink_refresh_token_start">Rozpocznij odnawianie dostępu</string>
+    <string name="carelink_refresh_token_failed">Odnowienie dostępu nie powiodło się! Spróbuj ponownie!</string>
+    <string name="carelink_download_start">Rozpocznij pobieranie</string>
+    <string name="carelink_download_failed">Pobieranie danych się nie powiodło!</string>
+    <string name="carelink_credential_status_not_authenticated">Nie zalogowano! Zaloguj się!</string>
+    <string name="carelink_credential_status_access_expired">Dostęp wygasł! Nastąpi odświeżenie!</string>
+    <string name="carelink_credential_status_refresh_expired">Sesja logowania wygasła! Zaloguj się!</string>
+    <string name="data_source">Źródło danych:</string>
 </resources>

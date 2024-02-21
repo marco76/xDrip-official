@@ -1384,6 +1384,9 @@
     <string name="title_use_number_icon_large">Usar icono numérico grande</string>
     <string name="summary_number_icon_large_arrow">Muestra la flecha de tendencia en el icono grande</string>
     <string name="title_number_icon_large_arrow">Mostrar Flecha en Icono Grande</string>
+    <string name="summary_aod_use_top">Usar el primer quinto de la pantalla para el widget AOD</string>
+    <string name="title_aod_use_top_center">Usar centro superior</string>
+    <string name="summary_aod_use_center">Usar el tercer quinto de la pantalla para el Widget AOD</string>
     <string name="summary_show_home_on_boot">Mostrar la pantalla xDrip automáticamente después de que se inicie el dispositivo</string>
     <string name="title_show_home_on_boot">Mostrar xDrip al arrancar</string>
     <string name="eula">CLUF</string>
@@ -1499,6 +1502,8 @@
     <string name="change_settings">Cambiar ajustes</string>
     <string name="do_you_want_to_delete_and_reset_the_calibrations_for_this_sensor">¿Quiere borrar o reinicializar las calibraciones para este sensor?</string>
     <string name="sensor_stop_confirm">¿Desea detener el sensor?</string>
+    <string name="sensor_stop_confirm_norestart">No podrás simplemente reactivar el sensor.</string>
+    <string name="sensor_stop_confirm_really_norestart">¡ADVERTENCIA!\n\nNo podrás reiniciar el dispositivo.</string>
     <string name="you_have_an_old_experimental_glucose_prediction_setting_enabled__this_is_not_recommended_and_could_mess_things_up_badly__shall_i_disable_this_for_you">Tiene habilitado ajustes antiguos experimentales de predicción de glucemia.\n\nNO SE RECOMIENDA pues podría dañar muchos elementos.\n\n¿Deshabilitarlo?</string>
     <string name="settings_issue">¡Error en los ajustes!</string>
     <string name="do_you_want_to_use_this_synced_fingerstick_blood_glucose_result_to_calibrate_with__you_can_change_when_this_dialog_is_displayed_in_settings">¿Desea calibrar con este resultado de glucemia mediante punción digital sincronizado?\n\n(puede cambiarlo cuando se muestre este diálogo en Ajustes)</string>
@@ -1789,4 +1794,24 @@
     <string name="summary_Lib2_show_sense_on_status">Activar para mostrar información adicional en Estado para el sensor Libre 2.</string>
     <string name="import_qr_code_warning">¡Solo importa la configuración de las fuentes en las que confías!\n\nPor favor, confirma la importación de las siguientes configuraciones:\n\n</string>
     <string name="scan_to_load_xdrip_settings">Escanear para cargar ajustes de xDrip</string>
+    <string name="manage_permissions">Administrar permisos</string>
+    <string name="open_health_connect_settings_to_manually_manage_permissions">Abre los ajustes de Open Health para administrar manualmente los permisos</string>
+    <string name="send_data_to_health_connect">Enviar datos a Health Connect</string>
+    <string name="get_data_from_health_connect">Obtener datos de Health Connect</string>
+    <string name="requires_android_8_and_google_companion_application_or_android_14">Requiere aplicaciones Android 8+ y Google companion o Android 14+</string>
+    <string name="send_and_receive_data_from_google_health_connect_and_google_fit">Enviar y recibir datos de Google Health Connect y Google Fit</string>
+    <string name="google_health_connect">Google Health Connect</string>
+    <string name="google_health_connect_needs_perms">ERROR: ¡Health connect necesita permisos! - intenta de nuevo desde el menú de configuración</string>
+    <string name="carelink_auth_country_required">¡País requerido!</string>
+    <string name="carelink_auth_status_authenticated">¡Estado autenticado!</string>
+    <string name="carelink_auth_status_not_authenticated">¡Estado no autenticado!</string>
+    <string name="carelink_auth_login_in_progress">Inicio de sesión en curso...</string>
+    <string name="carelink_refresh_token_start">Iniciar renovación de acceso</string>
+    <string name="carelink_refresh_token_failed">¡Falló la renovación de acceso! ¡Volverá a intentarlo!</string>
+    <string name="carelink_download_start">Iniciar descarga</string>
+    <string name="carelink_download_failed">¡Fallo al descargar!</string>
+    <string name="carelink_credential_status_not_authenticated">¡No has iniciado sesión! ¡Por favor inicia sesión!</string>
+    <string name="carelink_credential_status_access_expired">¡Acceso expirado! ¡Se actualizará!</string>
+    <string name="carelink_credential_status_refresh_expired">¡Inicio de sesión expirado! ¡Inicie sesión!</string>
+    <string name="data_source">Fuente de datos:</string>
 </resources>

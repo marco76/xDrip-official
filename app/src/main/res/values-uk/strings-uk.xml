@@ -8,7 +8,7 @@
     <string name="menu_refresh">Оновити</string>
     <string name="menu_export_database">Експорт бази даних</string>
     <string name="menu_export_csv_sidiary">Експорт CSV (формат SiDiary)</string>
-    <string name="menu_import_db">Імпорт бази даних</string>
+    <string name="menu_import_db">Відновлення бази даних</string>
     <string name="error_bluetooth_not_supported">Помилка: Bluetooth не підтримується даним пристроєм</string>
     <string name="unknown_device">Невідомий пристрій</string>
     <string name="connecting_to_device">Підключення до пристрою</string>
@@ -153,7 +153,7 @@
     <string name="low_predicted">Прогнозується гіпоглікемія!</string>
     <string name="in">через</string>
     <string name="yes_enter_setup_mode">Так, увійти в режим налаштувань</string>
-    <string name="nokeep_parakeet_as_it_is">Ні, використовувати Parakeet без змін</string>
+    <string name="nokeep_parakeet_as_it_is">Ні, залишити Parakeet без змін</string>
     <string name="are_you_sure_you_want_switch_parakeet_to_setup">Ви впевнені, що хочете перемкнути Parakeet в режим налаштування?\n\nЗазвичай, даний режим використовується тільки для передачі на Parakeet текстових повідомлень, за допомогою яких можна, наприклад, змінити трансмітер, з якого Parakeet отримує дані тощо.</string>
     <string name="split_delete_or_do_nothing">Розділити, видалити або нічого не робити</string>
     <string name="split_this_block_in_two">Розділити блок на 2 частини</string>
@@ -223,7 +223,7 @@
     <string name="alarm_at_forecasted_low_mins">Сповіщати за (в хвилинах)</string>
     <string name="other_xdrip_plus_alerts">Інші сповіщення</string>
     <string name="xdrip_plus_display_settings">Налаштування відображення</string>
-    <string name="display_customisations">Налаштування зовнішнього вигляду головного екрана та елементів додатку</string>
+    <string name="display_customisations">Налаштування відображення</string>
     <string name="insulin_carb_ratios_etc_for_models">Налаштування інсуліну та вуглеводів для моделі</string>
     <string name="grams_of_carbohydrate_one_unit_covers">Кількість вуглеводів (г), утилізованих 1 од. інсуліну</string>
     <string name="linear_model_carbs_absorbed_per_hour">Лінійна модель кількості засвоюваних вуглеводів протягом години</string>
@@ -319,7 +319,7 @@
     <string name="space_units">" одиниць"</string>
     <string name="units">од.</string>
     <string name="carbs">вугл.</string>
-    <string name="when">Коли (год хв)</string>
+    <string name="when">коли (ГГХХ)</string>
     <string name="speak_your_treatment">Вимовте вголос значення, яке хочете ввести, наприклад:\n N одиниць інсуліну / N грам вуглеводів</string>
     <string name="speech_recognition_is_not_supported">Розпізнавання голосу не підтримується</string>
     <string name="treatment_note">Нотатка до введеного значення</string>
@@ -371,7 +371,7 @@
     <string name="install_pebble_trend_watchface">Встановіть циферблат Pebble Trend</string>
     <string name="install_pebble_watchface">Встановіть циферблат на Pebble</string>
     <string name="glucose_history">Історія глікемії</string>
-    <string name="import_database">Імпорт бази даних</string>
+    <string name="import_database">Відновлення бази даних</string>
     <string name="sensor_table">Таблиця сенсора</string>
     <string name="bg_readings_table">Таблиця значень глюкози</string>
     <string name="long_press_to_split_or_delete">Натисніть і утримуйте, аби розділити або видалити</string>
@@ -1290,6 +1290,7 @@
     <string name="title_nsfollow_url">URL підписки Nightscout</string>
     <string name="summary_nsfollow_download_treatments">Завантажувати введені користувачем значення з Nightscout для фоловерів</string>
     <string name="title_nsfollow_download_treatments">Завантажувати користувацькі значення</string>
+    <string name="title_nsfollow_lag">Затримка Nightscout-підписки</string>
     <!-- Maybe we can use them later?
     <string name="title_clfollow_user">CareLink Username</string>
     <string name="summary_clfollow_user">CareLink login username</string>
@@ -1386,6 +1387,17 @@
     <string name="title_use_number_icon_large">Відображати значення крупно</string>
     <string name="summary_number_icon_large_arrow">Відображати покажчик тренда, для роботи необхідна активація Відображати значення крупно</string>
     <string name="title_number_icon_large_arrow">Відображати тренд</string>
+    <string name="title_xdrip_plus_accessibility">Настройки режиму екрана Always On</string>
+    <string name="summary_aod_use_top">Встановити п\'яту частину екрану для AOD віджету</string>
+    <string name="title_aod_use_top">Встановити вгорі</string>
+    <string name="summary_aod_use_top_center">Зайняти другі 20% екрану для AOD віджету</string>
+    <string name="title_aod_use_top_center">Встановити вгорі по центру</string>
+    <string name="summary_aod_use_center">Зайняти треті 20% екрану для AOD віджету</string>
+    <string name="title_aod_use_center">Встановити у центрі</string>
+    <string name="summary_aod_use_center_bottom">Зайняти четверті 20% екрану для AOD віджету</string>
+    <string name="title_aod_use_center_bottom">Встановити внизу по центру</string>
+    <string name="summary_aod_use_bottom">Зайняти п\'яті 20% екрану для AOD віджету</string>
+    <string name="title_aod_use_bottom">Встановити внизу</string>
     <string name="summary_show_home_on_boot">Автоматично відображати екран xDrip+ після завантаження пристрою</string>
     <string name="title_show_home_on_boot">Показувати xDrip+ після завантаження</string>
     <string name="eula">Ліцензійна угода</string>
@@ -1501,6 +1513,8 @@
     <string name="change_settings">Змінити налаштування</string>
     <string name="do_you_want_to_delete_and_reset_the_calibrations_for_this_sensor">Хочете видалити або скинути калібрування сенсора?</string>
     <string name="sensor_stop_confirm">Ви бажаєте зупинити сенсор?</string>
+    <string name="sensor_stop_confirm_norestart">Ви не зможете просто перезапустити сенсор.</string>
+    <string name="sensor_stop_confirm_really_norestart">УВАЖНО!\n\nВи не зможете перезапустити пристрій.</string>
     <string name="you_have_an_old_experimental_glucose_prediction_setting_enabled__this_is_not_recommended_and_could_mess_things_up_badly__shall_i_disable_this_for_you">Активований старий експериментальний алгоритм прогнозування глюкози.\n\nЦе НЕ РЕКОМЕНДУЄТЬСЯ, оскільки може серйозно нашкодити.\n\nВимкнути даний алгоритм?</string>
     <string name="settings_issue">Проблема з налаштуваннями</string>
     <string name="do_you_want_to_use_this_synced_fingerstick_blood_glucose_result_to_calibrate_with__you_can_change_when_this_dialog_is_displayed_in_settings">Ви хочете використовувати ці синхронізовані дані глюкометра для калібрування?\n\n(ці налаштування можуть бути змінені в Параметрах)</string>
@@ -1783,4 +1797,24 @@
     <string name="summary_Lib2_show_sense_on_status">Увімкніть, щоб показувати у Статусі додаткову інформацію про сенсор Libre 2.</string>
     <string name="import_qr_code_warning">Імпортуйте настройки лише з джерел, яким ви довіряєте!\n\nБудь ласка, підтвердіть імпорт наступних налаштувань:\n\n</string>
     <string name="scan_to_load_xdrip_settings">Скануйте для завантаження налаштувань xDrip</string>
+    <string name="manage_permissions">Керувати дозволами</string>
+    <string name="open_health_connect_settings_to_manually_manage_permissions">Відкрити налаштування Health Connect для керування дозволами</string>
+    <string name="send_data_to_health_connect">Надсилати дані до Health Connect</string>
+    <string name="get_data_from_health_connect">Отримувати дані від Health Connect</string>
+    <string name="requires_android_8_and_google_companion_application_or_android_14">Потребує Android 8 + та додаток Google companion або Android 14+</string>
+    <string name="send_and_receive_data_from_google_health_connect_and_google_fit">Надсилати та отримувати дані з Google Health Connect і Google Fit</string>
+    <string name="google_health_connect">Google Health Connect</string>
+    <string name="google_health_connect_needs_perms">Помилка: Health Connect потребує дозволу! - перевірте його у налаштуваннях</string>
+    <string name="carelink_auth_country_required">Необхідно вказати країну!</string>
+    <string name="carelink_auth_status_authenticated">Статус підтверджено!</string>
+    <string name="carelink_auth_status_not_authenticated">Статус не підтверджено!</string>
+    <string name="carelink_auth_login_in_progress">Виконується вхід...</string>
+    <string name="carelink_refresh_token_start">Почати відновлення доступу</string>
+    <string name="carelink_refresh_token_failed">Не вдалося відновити доступ! Спробую повторити!</string>
+    <string name="carelink_download_start">Почати завантаження</string>
+    <string name="carelink_download_failed">Завантажити дані не вдалося!</string>
+    <string name="carelink_credential_status_not_authenticated">Спершу, будь ласка, увійдіть у систему!</string>
+    <string name="carelink_credential_status_access_expired">Доступ завершився! Спробую поновити!</string>
+    <string name="carelink_credential_status_refresh_expired">Логін завершено! Увійдіть в систему повторно!</string>
+    <string name="data_source">Джерело даних:</string>
 </resources>
