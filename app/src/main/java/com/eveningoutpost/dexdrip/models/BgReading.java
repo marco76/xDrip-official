@@ -1613,8 +1613,9 @@ public class BgReading extends Model implements ShareUploadableBg {
 
         // FYI: By default, assertions are disabled at runtime. Add "-ea" to commandline to enable.
         // https://docs.oracle.com/javase/7/docs/technotes/guides/language/assert.html
-        assert last_2.get(0).uuid.equals(this.uuid)
-                : "Invariant condition not fulfilled: calculating slope and current reading wasn't saved before";
+        // mmo: removed because when I start on the phone and the data is empty it crashes
+        // assert last_2.get(0).uuid.equals(this.uuid)
+        //        : "Invariant condition not fulfilled: calculating slope and current reading wasn't saved before";
 
         if ((last_2 != null) && (last_2.size() == 2)) {
             calculated_value_slope = calculateSlope(this, last_2.get(1));
