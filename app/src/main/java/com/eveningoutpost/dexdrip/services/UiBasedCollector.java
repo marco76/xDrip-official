@@ -77,6 +77,7 @@ public class UiBasedCollector extends NotificationListenerService {
         coOptedPackages.add("com.dexcom.g6.region1.mmol");
         coOptedPackages.add("com.dexcom.g6.region3.mgdl");
         coOptedPackages.add("com.dexcom.dexcomone");
+        coOptedPackages.add("com.dexcom.stelo");
         coOptedPackages.add("com.dexcom.g7");
         coOptedPackages.add("com.dexcom.d1plus");
         coOptedPackages.add("com.camdiab.fx_alert.mmoll");
@@ -91,13 +92,16 @@ public class UiBasedCollector extends NotificationListenerService {
         coOptedPackages.add("com.medtronic.diabetes.simplera.eu");
         coOptedPackages.add("com.senseonics.gen12androidapp");
         coOptedPackages.add("com.senseonics.androidapp");
+        coOptedPackages.add("com.microtech.aidexx.mgdl"); // Experiment
 
         coOptedPackagesAll.add("com.dexcom.dexcomone");
         coOptedPackagesAll.add("com.dexcom.d1plus");
+        coOptedPackagesAll.add("com.dexcom.stelo");
         coOptedPackagesAll.add("com.medtronic.diabetes.guardian");
         coOptedPackagesAll.add("com.medtronic.diabetes.simplera.eu");
         coOptedPackagesAll.add("com.senseonics.gen12androidapp");
         coOptedPackagesAll.add("com.senseonics.androidapp");
+        coOptedPackagesAll.add("com.microtech.aidexx.mgdl"); // Experiment
 
         companionAppIoBPackages.add("com.insulet.myblue.pdm");
 

@@ -37,6 +37,10 @@
     <string name="pref_header_cloud_storage">Nettskylagring</string>
     <string name="auto_configure_title">Autokonfigurer</string>
     <string name="prefs_auto_config_summary">Autokonfigurer med strekkode.</string>
+    <string name="auto_config_cam_title">Kamera</string>
+    <string name="auto_config_cam_summary">Skann en QR-kode med din mobil (anbefalt)</string>
+    <string name="auto_config_image_title">Bildefil</string>
+    <string name="auto_config_image_summary">Du kan lagre QR-koden som en bildefil (f.eks. .png eller .jpeg) på mobilen din. Bruk deretter dette alternativet til å skanne QR-koden fra den lagrede filen.</string>
     <string name="scan_share2_barcode">Skan delingsstrekkode</string>
     <string name="pref_share2_scan_barcode_summary">Eller skanne strekkoden på mottakeren</string>
     <!-- MongoDB Settings -->
@@ -53,7 +57,7 @@
     <string name="pref_dialog_mongodb_device_status_collection">Skriv inn samlingsnavnet for enhetsstatus</string>
     <string name="pref_message_mongodb_device_status_collection">Dette er navnet på samlingen der batteriet og andre enhetsdata vil bli lagret</string>
     <!-- API Settings -->
-    <string name="pref_title_api">Nightscout-synkronisering (REST)</string>
+    <string name="pref_title_api">Nightscout-synkronisering</string>
     <string name="pref_title_api_enabled">Aktivert</string>
     <string name="pref_summary_api_enabled">REST API er den vanlige måten å koble til Nightscout</string>
     <string name="pref_title_api_url">Base-URL</string>
@@ -115,6 +119,7 @@
     <string name="title_activity_update">xDrip+ oppdatering tilgjengelig</string>
     <string name="title_activity_display_qrcode">Del innstillinger med QR-kode</string>
     <string name="title_activity_send_feed_back">Send tilbakemelding til Jamorham</string>
+    <string name="title_activity_save_logs">Lagre logger</string>
     <string name="title_activity_maps">Parakeet Kart</string>
     <string name="title_activity_display_preferences">Vis innstillinger</string>
     <string name="export_submenu">Import / Eksport funksjoner</string>
@@ -394,7 +399,9 @@
     <string name="please_enter_your_question_or_comments_here">Skriv inn ditt spørsmål eller kommentarer her.\n\nHvis du oppgir en e-postadresse kan det være at du få svar.\n\n</string>
     <string name="optional_contact_info_here_eg_email">Valgfri kontaktinfo, for eksempel e-post</string>
     <string name="send_message">Send melding</string>
+    <string name="save_logs">Lagre logger</string>
     <string name="please_indicate_what_you_think_of_the_app_generally">Vennligst oppgi hva du synes om programmet generelt</string>
+    <string name="log_confidential_note">Advarsel!\nLoggene kan inneholde konfidensiell informasjon som passord eller bruker-ID\'er.</string>
     <string name="preferences_saved_in_sdcard_downloads">Innstillinger lagret i intern lagring (Download/xDrip-export)</string>
     <string name="could_not_write_to_sdcard_check_perms">Klarte ikke skrive til SD-kort - sjekk tillatelser?</string>
     <string name="loaded_preferences_restarting">Innstillinger lastet! - Omstart</string>
@@ -593,7 +600,7 @@
     <string name="short_speak_readings_shortcut">Vis snarvei til ☰ meny for å skru av/på talte avlesninger</string>
     <string name="speak_readings_shortcut">Taleavlesning-snarvei</string>
     <string name="battery_optimization_off">Sørg for at batterioptimalisering er skrudd av for Android 6+ (anbefalt).</string>
-    <string name="battery_optimization_on">Ikke fortsett å spørre om batterioptimalisering (ikke anbefalt).</string>
+    <string name="battery_optimization_on">Vil ikke fortsette å spørre om batterioptimalisering når dette er aktivert (ikke anbefalt).</string>
     <string name="battery_optimization_prompt">Batterioptimaliserings forespørsel</string>
     <string name="advanced_bluetooth_settings">Avanserte innstillinger for Bluetooth</string>
     <string name="bluetooth_settings">Bluetooth-innstillinger</string>
@@ -640,7 +647,7 @@
     <string name="engineering_mode">Engineeringmodus</string>
     <string name="allow_unsafe_settings">Tillat ending av usikre innstillinger som kan ødelegge alt!</string>
     <string name="daily_save_db">Lagre databasen daglig</string>
-    <string name="allow_daily_db_save">Tillager den daglige intensjonstjenesten å lagre databasen før den tømmer</string>
+    <string name="allow_daily_db_save">Lar den daglige intensjonstjenesten lagre databasen før tømming</string>
     <string name="options_for_extra_line">Alternativ for ekstra statuslinje</string>
     <string name="todays_average_value">Dagens gjennomsnittlige verdi.</string>
     <string name="ac1_estimation_dcct">A1c-estimat i DCCT format (%)</string>
@@ -722,14 +729,14 @@
     <string name="influxdb_database_name">InfluxDB databasenavn</string>
     <string name="user">Bruker</string>
     <string name="password">Passord</string>
-    <string name="upload_to_dexcom">Aktiver denne til å laste opp til Dexcom\'s servere</string>
-    <string name="upload_to_dexcom_share">Last opp BS-verdier som Dexcom Share</string>
+    <string name="upload_to_dexcom">Aktiver dette for å laste opp blodsukkeravlesninger til Dexcom Share-servere</string>
+    <string name="upload_to_dexcom_share">Last opp BS-verdier</string>
     <string name="accounts_outside_usa">Deaktivert = Din konto og følger-app er fra utenfor USA</string>
     <string name="accounts_inside_usa">Aktivert = Din konto og følger-app er fra USA</string>
     <string name="usa_based_account">USA basert Dexcom-konto</string>
-    <string name="dexcom_login">Din innlogging til Dexcom\'s hjemmeside</string>
+    <string name="dexcom_login">Ditt brukernavn til Dexcom sin hjemmeside</string>
     <string name="dexcom_user">Dexcom-konto</string>
-    <string name="dexcom_login_password">Ditt passord for Dexcom\'s hjemmeside</string>
+    <string name="dexcom_login_password">Ditt passord for Dexcom sin hjemmeside</string>
     <string name="dexcom_password">Dexcom-konto passord</string>
     <string name="dexcom_receiver_serial">10-tegn serienummer til Dexcom-mottaker</string>
     <string name="dexcom_test_mode_serial">10-tegns serienummer for test-modus</string>
