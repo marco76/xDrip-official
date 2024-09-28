@@ -312,8 +312,8 @@
     <string name="use_excessive_wakelocks">Use Excessive Wakelocks</string>
     <string name="speak_readings">Speak Readings</string>
     <string name="extra_status_line">Extra Status Line</string>
-    <string name="dexcom_share_server_upload">Dexcom Share Server Upload</string>
-    <string name="upload_data_to_dex_servers">Upload data to Dexcoms Servers so you can use your data with Dexcoms apps</string>
+    <string name="dexcom_share_server_upload">Dex Share</string>
+    <string name="upload_data_to_dex_servers">Upload data to Dex Share Servers</string>
     <string name="manage_followers">Manage Followers</string>
     <string name="manage_existing_followers">Manage your existing followers and invite new ones.</string>
     <string name="invite_follower">Invite a Follower</string>
@@ -759,15 +759,15 @@
     <string name="influxdb_database_name">InfluxDB database name</string>
     <string name="user">User</string>
     <string name="password">Password</string>
-    <string name="upload_to_dexcom">Enable this to upload to Dexcom\'s servers</string>
-    <string name="upload_to_dexcom_share">Upload BG values as Dexcom Share</string>
+    <string name="upload_to_dexcom">Enable this to upload to Dex Share servers</string>
+    <string name="upload_to_dexcom_share">Upload BG values to Dex Share</string>
     <string name="accounts_outside_usa">Disabled = Your account and follower apps are from outside the USA</string>
     <string name="accounts_inside_usa">Enabled = Your account and follower apps are from the USA</string>
-    <string name="usa_based_account">Dexcom USA based account</string>
-    <string name="dexcom_login">Your login for Dexcom\'s Website</string>
-    <string name="dexcom_user">Dexcom Account Login</string>
-    <string name="dexcom_login_password">Your password for Dexcom\'s Website</string>
-    <string name="dexcom_password">Dexcom Account Password</string>
+    <string name="usa_based_account">Dex USA based account</string>
+    <string name="dexcom_login">Your login for Dex share</string>
+    <string name="dexcom_user">Dex Account Login</string>
+    <string name="dexcom_login_password">Your password for Dex share</string>
+    <string name="dexcom_password">Dex Account Password</string>
     <string name="dexcom_receiver_serial">10-Character Dexcom Receiver serial number</string>
     <string name="dexcom_test_mode_serial">10-Character Test Mode serial number</string>
     <string name="glucose_meters">Glucose Meters</string>
@@ -1460,6 +1460,7 @@
     <string name="summary_plus_accept_follower_actions">Treatments, Calibrations and other actions from followers will be accepted</string>
     <string name="title_plus_accept_follower_actions">Accept follower actions</string>
     <string name="summary_plus_whole_house">Participate in a Whole House Network</string>
+    <string name="summary_plus_xdrip_cloud">Use the new xDrip+ cloud servers. Master and followers must all have this setting set the same.</string>
     <string name="title_plus_whole_house">Whole House</string>
     <string name="summary_libre_whole_house_collector">This phone will be a collector in a whole house network</string>
     <string name="title_libre_whole_house_collector">Libre Whole House</string>
@@ -1783,6 +1784,7 @@
     <string name="proceed">Proceed</string>
     <string name="special_pairing_workaround">Special Pairing Workaround</string>
     <string name="save_power">Save Power</string>
+    <string name="use_xdrip_cloud">Use xDrip Cloud</string>
     <string name="reduce_battery_and_network_overhead">Reduce battery and network overhead by using batch processing and excluding unnecessary data</string>
     <string name="simplify_graphs_by_smoothing_out_irregularities">Simplify graphs by smoothing out irregularities in the previous readings.  The current reading, alerts and broadcast value are not affected by this setting.  </string>
     <string name="graph_smoothing">Graph Smoothing</string>
@@ -1911,4 +1913,5 @@
     <string name="use_camera_light">Use Camera Light</string>
     <string name="use_camera_light_summary">Flash camera light during alerts when connected to a charger</string>
     <string name="g7_should_start_automatically">G7 should start automatically</string>
+    <string name="screenshot">Screenshot</string>
 </resources>
