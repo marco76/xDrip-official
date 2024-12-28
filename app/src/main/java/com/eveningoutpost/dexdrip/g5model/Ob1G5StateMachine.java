@@ -61,11 +61,13 @@ import javax.crypto.spec.SecretKeySpec;
 import io.reactivex.schedulers.Schedulers;
 import lombok.val;
 
+import static com.eveningoutpost.dexdrip.LibreReceiver.sendDataHome;
 import static com.eveningoutpost.dexdrip.g5model.BluetoothServices.Authentication;
 import static com.eveningoutpost.dexdrip.g5model.BluetoothServices.Control;
 import static com.eveningoutpost.dexdrip.g5model.BluetoothServices.ExtraData;
 import static com.eveningoutpost.dexdrip.g5model.BluetoothServices.ProbablyBackfill;
 import static com.eveningoutpost.dexdrip.g5model.FirmwareCapability.isTransmitterG6Rev2;
+import static com.eveningoutpost.dexdrip.marco.DexcomSender.sendDexcomDataHome;
 import static com.eveningoutpost.dexdrip.models.JoH.bytesToHex;
 import static com.eveningoutpost.dexdrip.models.JoH.msSince;
 import static com.eveningoutpost.dexdrip.models.JoH.pratelimit;
@@ -94,6 +96,8 @@ import static com.eveningoutpost.dexdrip.utilitymodels.Constants.MINUTE_IN_MS;
 import static com.eveningoutpost.dexdrip.utilitymodels.Constants.SECOND_IN_MS;
 import static com.eveningoutpost.dexdrip.utils.DexCollectionType.getBestCollectorHardwareName;
 import static com.eveningoutpost.dexdrip.utils.bt.Helper.getStatusName;
+
+import org.json.JSONException;
 
 
 /**
@@ -1616,6 +1620,12 @@ public class Ob1G5StateMachine {
 
             if (WholeHouse.isLive()) {
                 Mimeograph.poll(false);
+            }
+
+            try {
+                sendDexcomDataHome(bgReading);
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
             }
 
         } else {
