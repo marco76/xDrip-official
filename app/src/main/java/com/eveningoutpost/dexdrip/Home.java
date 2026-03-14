@@ -12,6 +12,9 @@ import static com.eveningoutpost.dexdrip.utilitymodels.Constants.DAY_IN_MS;
 import static com.eveningoutpost.dexdrip.utilitymodels.Constants.HOUR_IN_MS;
 import static com.eveningoutpost.dexdrip.utilitymodels.Constants.MINUTE_IN_MS;
 import static com.eveningoutpost.dexdrip.utilitymodels.Constants.SECOND_IN_MS;
+import static com.eveningoutpost.dexdrip.utils.DexCollectionType.GluPro;
+import static com.eveningoutpost.dexdrip.utils.DexCollectionType.LibreAlarm;
+import static com.eveningoutpost.dexdrip.utils.DexCollectionType.Medtrum;
 import static com.eveningoutpost.dexdrip.xdrip.gs;
 
 import android.Manifest;
@@ -1126,6 +1129,11 @@ public class Home extends ActivityWithMenu implements ActivityCompat.OnRequestPe
         context.startActivity(intent);
     }
 
+    private boolean isAutoYPanEnabled() {
+        // When true, xDrip auto-pans the Y-axis instead of extending the range for out-of-range readings.
+        return Pref.getBoolean("auto_y_pan", true);
+    }
+
     public void cloudBackup(MenuItem x) {
         JoH.startActivity(BackupActivity.class);
     }
@@ -2104,8 +2112,14 @@ public class Home extends ActivityWithMenu implements ActivityCompat.OnRequestPe
             float tempwidth = (float) moveViewPort.width() / 4;
             holdViewport.left = moveViewPort.right - tempwidth;
             holdViewport.right = moveViewPort.right + (moveViewPort.width() / 24);
-            holdViewport.top = moveViewPort.top;
-            holdViewport.bottom = moveViewPort.bottom;
+            if (!isAutoYPanEnabled()) {
+                holdViewport.top = moveViewPort.top;
+                holdViewport.bottom = moveViewPort.bottom;
+            } else {
+                Viewport v = bgGraphBuilder.computeYViewport();
+                holdViewport.top = v.top;
+                holdViewport.bottom = v.bottom;
+            }
             chart.setCurrentViewport(holdViewport);
             previewChart.setCurrentViewport(holdViewport);
             UserError.Log.e(TAG, "SMALL HEIGHT VIEWPORT WARNING");
@@ -2290,8 +2304,10 @@ public class Home extends ActivityWithMenu implements ActivityCompat.OnRequestPe
             case "time tick":
                 if (msSince(lastViewPortPan) < 45 * SECOND_IN_MS) {
                     UserError.Log.d(TAG, "Skipping VIEWPORT adjustment as panning and data just arrived: " + holdViewport.toString());
-                    holdViewport.top = maxViewPort.top;
-                    holdViewport.bottom = maxViewPort.bottom;
+                    if (!isAutoYPanEnabled()) {
+                        holdViewport.top = maxViewPort.top;
+                        holdViewport.bottom = maxViewPort.bottom;
+                    }
                     chart.setCurrentViewport(holdViewport); // reuse existing
                     return;
                 }
@@ -2311,8 +2327,10 @@ public class Home extends ActivityWithMenu implements ActivityCompat.OnRequestPe
         double hour_width = maxViewPort.width() / bgGraphBuilder.hoursShownOnChart();
         holdViewport.left = maxViewPort.right - hour_width * hours_to_show;
         holdViewport.right = maxViewPort.right;
-        holdViewport.top = maxViewPort.top;
-        holdViewport.bottom = maxViewPort.bottom;
+        if (!isAutoYPanEnabled()) {
+            holdViewport.top = maxViewPort.top;
+            holdViewport.bottom = maxViewPort.bottom;
+        }
 
         // if locked, center display on current bg values, not predictions
         if (homeShelf.get("time_locked_always")) {
@@ -2325,6 +2343,11 @@ public class Home extends ActivityWithMenu implements ActivityCompat.OnRequestPe
             UserError.Log.d(TAG, "MAX VIEWPORT " + maxViewPort);
         }
 
+        if (isAutoYPanEnabled()) {
+            Viewport v = bgGraphBuilder.computeYViewport();
+            holdViewport.top = v.top;
+            holdViewport.bottom = v.bottom;
+        }
         chart.setCurrentViewport(holdViewport);
 
     }
@@ -2462,7 +2485,8 @@ public class Home extends ActivityWithMenu implements ActivityCompat.OnRequestPe
         } else if (is_follower || collector.isPassive()) {
             displayCurrentInfo();
             Inevitable.task("home-notifications-start", 5000, Notifications::start);
-        } else if (!alreadyDisplayedBgInfoCommon && (DexCollectionType.getDexCollectionType() == DexCollectionType.LibreAlarm || collector == DexCollectionType.Medtrum)) {
+            // TODO add dexcollectiontype set handling for these
+        } else if (!alreadyDisplayedBgInfoCommon && (collector == LibreAlarm || collector == Medtrum || collector == GluPro)) {
             updateCurrentBgInfoCommon(collector, notificationText);
         }
         if (collector.equals(DexCollectionType.Disabled)) {
@@ -2541,7 +2565,7 @@ public class Home extends ActivityWithMenu implements ActivityCompat.OnRequestPe
             if (predicted_low_in_mins > 1) {
                 lowPredictText.append(getString(R.string.low_predicted) + "\n" + getString(R.string.in) + ": " + (int) predicted_low_in_mins + getString(R.string.space_mins));
                 if (predicted_low_in_mins < low_predicted_alarm_minutes) {
-                    lowPredictText.setTextColor(Color.RED); // low front getting too close!
+                    lowPredictText.setTextColor(getCol(X.color_low_predicted_critical_note)); // low front getting too close!
                 } else {
                     final double previous_predicted_low_in_mins = (BgGraphBuilder.previous_low_occurs_at - now) / 60000;
                     if ((BgGraphBuilder.previous_low_occurs_at > 0) && ((previous_predicted_low_in_mins + 5) < predicted_low_in_mins)) {
@@ -2677,9 +2701,11 @@ public class Home extends ActivityWithMenu implements ActivityCompat.OnRequestPe
         }
 
         if (!BgReading.doWeHaveRecentUsableData()) {
+            // TODO check null handling?
             long startedAt = Sensor.currentSensor().started_at;
             long computedStartedAt = SensorDays.get().getStart();
-            if (computedStartedAt > 0 && msSince(computedStartedAt) < HOUR_IN_MS * 3) {
+            if (computedStartedAt > 0) {
+                UserError.Log.d(TAG, "computedStartedAt " + JoH.dateTimeText(computedStartedAt));
                 startedAt = Math.min(computedStartedAt, startedAt);
             }
             final long warmUpMs = SensorDays.get().getWarmupMs();
@@ -2699,6 +2725,12 @@ public class Home extends ActivityWithMenu implements ActivityCompat.OnRequestPe
             displayCurrentInfo();
             // JamorHam, should I put here something like:
             // ?? if (screen_forced_on)  dontKeepScreenOn();
+            return;
+        }
+
+        // we can't use the Dex related code below so we handle things here
+        if (DexCollectionType.getDexCollectionType() == GluPro) {
+            displayCurrentInfo();
             return;
         }
 
@@ -3009,7 +3041,7 @@ public class Home extends ActivityWithMenu implements ActivityCompat.OnRequestPe
 
     // TODO consider moving this out of Home
     public static long stale_data_millis() {
-        if (DexCollectionType.getDexCollectionType() == DexCollectionType.LibreAlarm)
+        if (DexCollectionType.getDexCollectionType() == LibreAlarm)
             return (60000 * 13);
         return (60000 * 11);
     }
@@ -3575,7 +3607,7 @@ public class Home extends ActivityWithMenu implements ActivityCompat.OnRequestPe
         if (JoH.ratelimit("manual-update-check", 5)) {
             toast(getString(R.string.checking_for_update));
             UpdateActivity.last_check_time = -1;
-            UpdateActivity.checkForAnUpdate(getApplicationContext(), true);
+            UpdateActivity.checkForAnUpdate(this, true);
         }
     }
 
@@ -3651,13 +3683,21 @@ public class Home extends ActivityWithMenu implements ActivityCompat.OnRequestPe
 
     public static void snackBar(int buttonString, String message, View.OnClickListener mOnClickListener, Activity activity) {
 
-        Snackbar.make(
+        // Store Snackbar in a variable
+        Snackbar snackbar = Snackbar.make(
+                        activity.findViewById(android.R.id.content),
+                        message, Snackbar.LENGTH_LONG)
+                .setAction(buttonString, mOnClickListener);
 
-                activity.findViewById(android.R.id.content),
-                message, Snackbar.LENGTH_LONG)
-                .setAction(buttonString, mOnClickListener)
-                //.setActionTextColor(Color.RED)
-                .show();
+        // Disable ALL CAPS on the action button
+        Button b = snackbar.getView().findViewById(com.google.android.material.R.id.snackbar_action);
+        if (b != null) b.setAllCaps(false);
+
+        // Maximum number of lines to wrap into
+        TextView t = snackbar.getView().findViewById(com.google.android.material.R.id.snackbar_text);
+        if (t != null) t.setMaxLines(5);
+
+        snackbar.show();
     }
 
     public static void staticBlockUI(Activity context, boolean state) {

@@ -75,8 +75,9 @@ import com.eveningoutpost.dexdrip.cgm.webfollow.Cpref;
 import com.eveningoutpost.dexdrip.cgm.carelinkfollow.auth.CareLinkAuthenticator;
 import com.eveningoutpost.dexdrip.cgm.carelinkfollow.auth.CareLinkCredentialStore;
 import com.eveningoutpost.dexdrip.cloud.jamcm.Pusher;
-import com.eveningoutpost.dexdrip.g5model.DexSyncKeeper;
-import com.eveningoutpost.dexdrip.g5model.Ob1G5StateMachine;
+import com.eveningoutpost.dexdrip.cloud.nightlite.NightLiteClient;
+import com.eveningoutpost.dexdrip.cloud.nightlite.NightLiteEntry;
+import com.eveningoutpost.dexdrip.cloud.nightlite.NightLiteQR;
 import com.eveningoutpost.dexdrip.healthconnect.HealthConnectEntry;
 import com.eveningoutpost.dexdrip.healthconnect.HealthGamut;
 import com.eveningoutpost.dexdrip.insulin.inpen.InPenEntry;
@@ -465,7 +466,7 @@ public class Preferences extends BasePreferenceActivity implements SearchPrefere
                     editor.putString("cloud_storage_api_base", Joiner.on(' ').join(barcode.getApiUris()));
                     editor.apply();
                 } else {
-                    prefs.edit().putBoolean("cloud_storage_api_enable", false).apply();
+                  //  prefs.edit().putBoolean("cloud_storage_api_enable", false).apply(); // no need to disable
                 }
             }
             if (barcode.hasApiConfig()) {
@@ -474,7 +475,7 @@ public class Preferences extends BasePreferenceActivity implements SearchPrefere
                 editor.putString("cloud_storage_api_base", Joiner.on(' ').join(barcode.getApiUris()));
                 editor.apply();
             } else {
-                prefs.edit().putBoolean("cloud_storage_api_enable", false).apply();
+               // prefs.edit().putBoolean("cloud_storage_api_enable", false).apply(); // no need to disable
             }
 
             if (barcode.hasMqttConfig()) {
@@ -496,10 +497,25 @@ public class Preferences extends BasePreferenceActivity implements SearchPrefere
                     }
                 }
             } else {
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putBoolean("cloud_storage_mqtt_enable", false);
-                editor.apply();
+              //  SharedPreferences.Editor editor = prefs.edit();
+               // editor.putBoolean("cloud_storage_mqtt_enable", false); // no need to disable
+              //  editor.apply();
             }
+
+            try {
+                final NightLiteQR barcode2 = new NightLiteQR(scanContents);
+                if (barcode2.hasNsLiteConfig()) {
+                    UserError.Log.d(TAG, "NightLite QR code detected");
+                    if (NightLiteEntry.setApi(barcode2.getApiUris())) {
+                        JoH.static_toast_long("NightLite enabled");
+                        NightLiteClient.doUpload();
+                    }
+                }
+            } catch (Exception e) {
+                UserError.Log.e(TAG, "Error processing NightLite QR code: " + e);
+            }
+
+
         } else if (scanFormat.equals("CODE_128")) {
             Log.d(TAG, "Setting serial number to: " + scanContents);
             prefs.edit().putString("share_key", scanContents).apply();

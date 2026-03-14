@@ -493,6 +493,7 @@
     <string name="start_sensor">Inizializza Sensore</string>
     <string name="debug_and_other_misc_options">Debug e altre opzioni misc</string>
     <string name="low_glucose_values">Valori Glicemici Bassi</string>
+    <string name="low_predicted_too_close_note">Previsione ipo (critica)</string>
     <string name="bad_glucose_values">Valori Glicemici Errati</string>
     <string name="revert_to_default">Ritorna ai parametri di Default</string>
     <string name="filtered_values">Valori Filtrati</string>
@@ -1595,6 +1596,7 @@
     <string name="calibrate">Calibra</string>
     <string name="confirm_delete">Conferma cancellazione</string>
     <string name="are_you_sure_you_want_to_delete_this_treatment">Sei sicuro di voler eliminare questo trattamento?</string>
+    <string name="toast_treatment_more_than_one_hour_in_the_future">xDrip non può accettare trattamenti più di un\'ora nel futuro.</string>
     <string name="no_data_received_from_master_yet">Nessun dato ricevuto dal master</string>
     <string name="last_from_master_">Ultimo dato dal master: </string>
     <string name="prepare_to_test">Pronto a provare!</string>
@@ -1848,6 +1850,8 @@
     <string name="title_ymax">Imposta il massimo dell\'asse y</string>
     <string name="summary_ymin">Scegli yMin per quando non ci sono letture più basse.</string>
     <string name="summary_ymax">Scegli yMax per quando non ci sono letture più alte.</string>
+    <string name="summary_auto_y_pan"><b>Abilita:</b> Sposta il grafico con un asse Y fisso (minimo-massimo) per mostrare le letture fuori intervallo.\n<b>Disabilita:</b> Espandi l\'intervallo dell\'asse Y per includere le letture fuori intervallo.</string>
+    <string name="title_auto_y_pan">Spostamento auto asse Y</string>
     <string name="wait_to_connect">Verifica le impostazioni e aspetta il collegamento.</string>
     <string name="summary_sens_expiry_notify">Genera delle notifiche quando il sensore si avvicina alla scadenza.</string>
     <string name="title_sens_expiry">Notifiche Scadenza Sensore</string>
@@ -1957,4 +1961,31 @@
     <string name="system_sound_alarm">Suono/Allarme di Sistema</string>
     <string name="custom_sound_alarm">Suono/Allarme Personalizzato</string>
     <string name="default_xdrip_sound">Suono xDrip predefinito</string>
+    <string name="error_with_value">Errore con il valore</string>
+    <string name="turn_feature_off_on">Attiva/disattiva funzione</string>
+    <string name="glupro_activity_title">xDrip+ GluPro</string>
+    <string name="glupro_status">Stato Profilo Glicemia</string>
+    <string name="sending_blood_tests_to_transmitter">Invio Misure Capillari al Trasmettitore</string>
+    <string name="glupro_bluetooth_scanning">Scansione Bluetooth</string>
+    <string name="need_bluetooth_permissions">Necessità di autorizzazioni Bluetooth</string>
+    <string name="glupro_scan_again">Eseguire la scansione di nuovo</string>
+    <string name="smartguide_pairing">Accoppiamento SmartGuide</string>
+    <string name="glupro_pairing_pin">Pin Accopiamento</string>
+    <string name="glupro_operational">Operativo</string>
+    <string name="glupro_sensor_malfunction">Malfunzionamento sensore</string>
+    <string name="glupro_battery_low">Batteria in esaurimento</string>
+    <string name="glupro_session_stopped">Sessione terminata</string>
+    <string name="glupro_calibration_recommended">Calibrazione raccomandata</string>
+    <string name="glupro_calibration_required">Calibrazione richiesta</string>
+    <string name="glupro_value_too_low">Valore troppo basso</string>
+    <string name="glupro_value_too_high">Valore troppo alto</string>
+    <string name="glupro_sensor_alert">Allarme sensore</string>
+    <string name="glupro_sensor_fault">Guasto sensore</string>
+    <string name="glupro_temperature_too_high">Temperatura troppo alta</string>
+    <string name="glupro_temperature_too_low">Temperatura troppo bassa</string>
+    <string name="glupro_disconnected">Disconnesso</string>
+    <string name="glupro_connected">Connesso</string>
+    <string name="glupro_configuring">Configurazione</string>
+    <string name="glupro_configured">Configurato</string>
+    <string name="glupro_connect_failed">Connessione fallita</string>
 </resources>
